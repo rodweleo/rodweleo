@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-export default function ServiceListItem({ service }) {
+export default function ServiceListItem({ service }: {
+    service: any
+}) {
     return (
         <div className="max-w-[400px] space-y-2">
             <Image src={service.thumbnail} alt={service.title} width={500} height={500} className="rounded-xl" />

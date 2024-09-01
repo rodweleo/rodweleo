@@ -2,9 +2,11 @@
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"
 
-export default function PostBlogCommentForm({ blogPost }) {
+export default function PostBlogCommentForm({ blogPost }: {
+    blogPost: any
+}) {
     const handleSubmitComment = () => {
-        alert("Add the new comment")
+        alert(`Add the new comment to ${blogPost.title}`)
     }
     return (
         <form onSubmit={handleSubmitComment}>

@@ -3,7 +3,9 @@
 import { Button } from "./ui/button";
 import { ExternalLink } from "lucide-react";
 
-export default function NotableProjectActions({ project }) {
+export default function NotableProjectActions({ project }: {
+    project: any
+}) {
     const handleViewProject = () => {
         if (project.live_link) {
             window.open(project.live_link, "_blank");
@@ -26,7 +28,7 @@ export default function NotableProjectActions({ project }) {
                     className="flex items-center gap-1"
                     onClick={handleViewProject}
                     disabled={!project.live_link}
-                    aria-disabled={!project.live_link} 
+                    aria-disabled={!project.live_link}
                 >
                     <ExternalLink className="size-4" /> <span>View Project</span>
                 </Button>

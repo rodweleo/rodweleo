@@ -3,7 +3,9 @@ import { Badge } from "./ui/badge"
 import Link from "next/link"
 
 
-export default function BlogPostCard({ blog }) {
+export default function BlogPostCard({ blog }: {
+    blog: any
+}) {
 
     return (
         <div className="flex max-md:flex-wrap gap-2.5">
