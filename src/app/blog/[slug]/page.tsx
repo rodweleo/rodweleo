@@ -8,43 +8,64 @@ import { format, parseISO } from 'date-fns';
 import { CalendarDays } from 'lucide-react';
 import { Clock } from 'lucide-react';
 export async function generateStaticParams() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`).then((res) => res.json());
-    const posts = res.data;
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`).then((res) => res.json());
 
-    return posts.map((post: any) => ({
-        slug: post.slug,
-        post: post
-    }))
+        if (!res.ok) {
+            throw new Error(`Failed to fetch blog posts, status: ${res.status}`);
+        }
+        const posts = res.data;
+
+        return posts.map((post: any) => ({
+            slug: post.slug,
+            post: post
+        }))
+    } catch (error) {
+        console.error("Error generating static params:", error);
+        return [];
+    }
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const { slug } = params;
 
-    // Fetch post data to generate metadata
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`, {
-        params: {
-            slug: slug
+    try {
+        // Fetch post data to generate metadata
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`, {
+            params: {
+                slug: slug
+            }
+        });
+
+        if (res.status !== 200 || !res.data || !res.data.data || res.data.data.length === 0) {
+            throw new Error("Invalid response or no post found");
         }
-    });
 
-    const post = res.data.data[0];
+        const post = res.data.data[0];
 
-    return {
-        title: post.title,
-        description: post.description,
-        openGraph: {
+        return {
             title: post.title,
             description: post.description,
-            images: [
-                {
-                    url: post.thumbnail,
-                    width: 800,
-                    height: 600,
-                    alt: post.title,
-                },
-            ],
-        },
-    };
+            openGraph: {
+                title: post.title,
+                description: post.description,
+                images: [
+                    {
+                        url: post.thumbnail,
+                        width: 800,
+                        height: 600,
+                        alt: post.title,
+                    },
+                ],
+            },
+        };
+    } catch (error) {
+        console.error("Error generating metadata:", error);
+        return {
+            title: "Error",
+            description: "Unable to fetch post metadata",
+        };
+    }
 }
 
 export default async function Page({ params }: {
