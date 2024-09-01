@@ -18,7 +18,7 @@ export default async function Projects() {
         <div className="text-center space-y-2.5">
             <Badge className="text-xl">My Projects</Badge>
             <h1 className="text-4xl font-bold">Check out my latest work</h1>
-            <p className="text-slate-500">I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</p>
+            <p className="text-slate-500">I have worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</p>
         </div>
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 w-full">
             {

@@ -138,7 +138,7 @@ export const RequestQuotationForm = () => {
                             <div className="mb-4">
                                 <FormLabel className="text-base">Services</FormLabel>
                                 <FormDescription>
-                                    Select the services you'd want us to work on.
+                                    Select the services you would want us to work on.
                                 </FormDescription>
                             </div>
                             <div className="grid grid-cols-2 gap-2.5">

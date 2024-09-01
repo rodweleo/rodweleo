@@ -23,7 +23,7 @@ export default function Contact() {
                     <Badge className="text-xl">Contact Me</Badge>
                     <h1 className="font-bold text-5xl">Get in Touch</h1>
                     <p className="text-slate-500">
-                        Want to chat or have a project in mind? Just shoot me a <strong>Direct Message</strong> and I'll respond as soon as possible.
+                        Want to chat or have a project in mind? Just shoot me a <strong>Direct Message</strong> and I will respond as soon as possible.
                     </p>
                 </div>
             </section>

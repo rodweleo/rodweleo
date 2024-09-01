@@ -11,7 +11,7 @@ export async function generateStaticParams() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`).then((res) => res.json());
     const posts = res.data;
 
-    return posts.map((post) => ({
+    return posts.map((post: any) => ({
         slug: post.slug,
         post: post
     }))
@@ -80,7 +80,7 @@ export default async function Page({ params }: {
                 <h1 className="font-bold text-3xl">Comments</h1>
                 <ul className="space-y-2.5">
                     {
-                        post.comments.map((comment) => (
+                        post.comments.map((comment: any) => (
                             <li key={comment.id}>
                                 <Card className="max-w-lg">
                                     <CardHeader>
