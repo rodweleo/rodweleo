@@ -13,7 +13,7 @@ export const RequestQuotationSchema = z.object({
     .optional(),
   description: z.string(),
   message: z.string().optional(),
-  attachments: z.instanceof(FileList).optional()
+  attachments: z.any(),
 });
 
 export const ContactMeSchema = z.object({

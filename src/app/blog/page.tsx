@@ -1,6 +1,6 @@
 import BlogPostCard from "@/components/blog-post-card";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/utils/supabase/server"
+import supabaseClient from "@/utils/supabase/server"
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator"
 
@@ -16,8 +16,7 @@ export const metadata: Metadata = {
     }
 }
 const fetchBlogPosts = async () => {
-    const supabase = createClient();
-    const { data, error } = await supabase.from("blog-posts").select("*")
+    const { data, error } = await supabaseClient.from("blog-posts").select("*")
 
     return {
         data,
@@ -27,6 +26,12 @@ const fetchBlogPosts = async () => {
 
 export default async function Blog() {
     const { data, error } = await fetchBlogPosts();
+
+    if (error) {
+        return (<div>
+            Something went wrong.
+        </div>)
+    }
     return (
         <main className="space-y-5">
             <header className="space-y-2.5 flex flex-col items-center justify-center">

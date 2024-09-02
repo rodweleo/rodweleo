@@ -1,6 +1,6 @@
 import NotableProjectCard from '@/components/notable-project-card';
 import { Badge } from '@/components/ui/badge';
-import { createClient } from '@/utils/supabase/server';
+import supabaseClient from '@/utils/supabase/server';
 import { Metadata } from 'next';
 
 
@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     }
 }
 export default async function Projects() {
-    const supabase = createClient();
-    const { data } = await supabase.from("notable-projects").select()
+    const { data } = await supabaseClient.from("notable-projects").select()
 
     return <section id="projects" className="flex flex-col w-full justify-center items-center space-y-5">
         <div className="text-center space-y-2.5">
@@ -22,7 +21,7 @@ export default async function Projects() {
         </div>
         <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 w-full">
             {
-                data ? data.map((project) => (
+                data ? data.map((project: any) => (
                     <li key={project.name}>
                         <NotableProjectCard project={project} />
                     </li>

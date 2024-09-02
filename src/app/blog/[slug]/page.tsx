@@ -1,25 +1,24 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import axios from "axios";
 import { Metadata } from "next";
-import Image from "next/image"
+import Image from "next/image";
 import PostBlogCommentForm from "@/components/post-blog-comment-form";
 import { format, parseISO } from 'date-fns';
 import { CalendarDays } from 'lucide-react';
 import { Clock } from 'lucide-react';
+import supabaseClient from "@/utils/supabase/server";
+
 export async function generateStaticParams() {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`).then((res) => res.json());
+        const { data: posts, error } = await supabaseClient
+            .from('blog-posts')
+            .select('slug');
 
-        if (!res.ok) {
-            throw new Error(`Failed to fetch blog posts, status: ${res.status}`);
-        }
-        const posts = res.data;
+        if (error) throw error;
 
         return posts.map((post: any) => ({
             slug: post.slug,
-            post: post
-        }))
+        }));
     } catch (error) {
         console.error("Error generating static params:", error);
         return [];
@@ -30,18 +29,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const { slug } = params;
 
     try {
-        // Fetch post data to generate metadata
-        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`, {
-            params: {
-                slug: slug
-            }
-        });
+        const { data: post, error } = await supabaseClient
+            .from('blog-posts')
+            .select('*')
+            .eq('slug', slug)
+            .single();
 
-        if (res.status !== 200 || !res.data || !res.data.data || res.data.data.length === 0) {
-            throw new Error("Invalid response or no post found");
-        }
-
-        const post = res.data.data[0];
+        if (error || !post) throw new Error("Invalid response or no post found");
 
         return {
             title: post.title,
@@ -71,21 +65,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export default async function Page({ params }: {
     params: {
         slug: string,
-        post: any
     }
 }) {
-
     const { slug } = params;
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/blogposts`, {
-        params: {
-            slug: slug
-        }
-    })
 
-    const post = res.data.data[0];
+    const { data: post, error } = await supabaseClient
+        .from('blog-posts')
+        .select("*")
+        .eq('slug', slug)
+        .single();
+
+    if (error || !post) {
+        console.error("Error fetching blog post:", error);
+        return <p>Error loading blog post</p>;
+    }
 
     const date = parseISO(post.created_at);
     const formattedDate = format(date, 'MMMM do, yyyy - HH:mm:ss');
+
     return (
         <main className="space-y-5">
             <figure>
@@ -129,5 +126,5 @@ export default async function Page({ params }: {
                 </div>
             </section>
         </main>
-    )
+    );
 }

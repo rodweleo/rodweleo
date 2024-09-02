@@ -1,6 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import { createClient } from '@/utils/supabase/server';
 import {
   Accordion,
   AccordionContent,
@@ -11,10 +10,9 @@ import { Button } from '@/components/ui/button';
 import { TOOLS } from "@/utils/data";
 import Image from "next/image";
 import WordFadeIn from "@/components/magicui/word-fade-in";
-
+import supabaseClient from "@/utils/supabase/server";
 export default async function Home() {
-  const supabase = createClient();
-  const { data, error } = await supabase.from("work-experience").select("*")
+  const { data, error } = await supabaseClient.from("work-experience").select("*")
 
   return (
     <main className="space-y-10">
