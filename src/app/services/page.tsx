@@ -16,32 +16,32 @@ export default function Services() {
             icon: "fa-solid fa-shield-halved",
             title: "Cyber Security",
             description: "Safeguarding organization's data and systems from cyber attacks and unauthorized access. ",
-            thumbnail: "/images/cyber-security.jfif"
+            thumbnail: "/images/cyber-security.png"
         },
         {
             icon: "fa-solid fa-cloud",
             title: "Cloud Services",
             description: "I provide comprehensive solutions tailored to your business needs, from selecting the right cloud provider to the implementation of scalable and cost-effective architectures.",
-            thumbnail: "/images/cloud-services.jfif"
+            thumbnail: "/images/cloud-services.png"
         },
         {
             icon: "fa-solid fa-gears",
             title: "API Intergration",
             description: "I implement automated processes, continuous integration/continuous deployment (CI/CD) pipelines, and infrastructure as code (IaC) to streamline development, testing, and deployment workflows.",
-            thumbnail: "/images/api-integration.jfif"
+            thumbnail: "/images/api-integration.png"
         },
         {
             icon: "fa-solid fa-mobile-screen-button",
             title: "Mobile Development",
             description: "I leverage the latest frameworks and technologies such as Flutter to build high-performance and user-friendly mobile applications. ",
-            thumbnail: "/images/mobile-app-development.jfif"
+            thumbnail: "/images/mobile-app-development.png"
         }
         ,
         {
             icon: "fa-solid fa-globe",
             title: "Web Development",
             description: "Building web applications; from front-end user interfaces, business logic to back-end server logic and database management. ",
-            thumbnail: "/images/web-development.jfif"
+            thumbnail: "/images/web-development.png"
         }
     ];
 

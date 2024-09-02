@@ -10,6 +10,8 @@ import MainFooter from "@/components/main-footer";
 import { Separator } from "@/components/ui/separator";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: 'Rodwell Leo - Software Engineer',
@@ -52,6 +54,8 @@ export default function RootLayout({
         </main>
         <Separator />
         <MainFooter />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

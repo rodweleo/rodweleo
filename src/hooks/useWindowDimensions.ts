@@ -17,6 +17,10 @@ export default function useWindowDimensions() {
 
   useEffect(() => {
     if (typeof window !== undefined) {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
       window.addEventListener("resize", handleWindowResize);
     }
   }, []);
