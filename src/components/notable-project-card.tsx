@@ -1,26 +1,25 @@
+"use client"
+
 import Image from "next/image"
 import { Badge } from "./ui/badge"
-import NotableProjectActions from "./notable-project-card-actions"
 import { ProjectProps } from "@/utils/types"
+import Link from "next/link"
+
 export default function NotableProjectCard({ project }: {
     project: ProjectProps
 }) {
     return (
-        <div className="sm:w-fit max-xl:flex-wrap cursor-pointer h-auto rounded-xl border flex justify-between shadow-xl hover:shadow-2xl hover:scale-[1.0075] transition-all duration-300 bg-white/90 " key={project.name}>
-            <Image src={project.thumbnail_url === null ? "" : project.thumbnail_url} className="max-xl:w-full rounded-t-lg" width={200} height={100} alt={project.name} unoptimized priority />
-            <div className="p-2 flex flex-col h-full space-y-1">
-                <h1 className="font-bold text-2xl">{project.name}</h1>
-                <p className="text-slate-500 text-ellipsis line-clamp-3 text-md">{project.description}</p>
-                <ul className="flex flex-wrap gap-1">
-                    {
-                        project.tech_stack.sort().map((stack: string) => (
-                            <Badge key={stack} className="bg-slate-200 text-black hover:bg-slate-300">{stack}</Badge>
-                        ))
-                    }
-                </ul>
-                <NotableProjectActions project={project} />
+        <div className="relative w-[400px] h-[300px] group aspect-video bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer">
+            <Image src={project.thumbnail_url === null ? "" : project.thumbnail_url} className="h-full w-full absolute inset-0 flex items-center justify-center" width={400} height={100} alt={project.name} unoptimized priority />
+            <div className="absolute inset-0 bg-gray-800 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="relative p-2 h-full space-y-2 flex flex-col justify-between">
+                    <div className="space-y-2">
+                        <p className="font-bold text-2xl text-white">{project.name}</p>
+                        <p className="text-white text-ellipsis line-clamp-3 text-md">{project.description}</p>
+                    </div>
+                    <Link href={`${project.live_link ? project.live_link : ""}`} className="text-blue-500 text-center border-2 font-bold border-blue-500 hover:font-bold hover:underline hover:text-white hover:bg-blue-500 transition-colors duration-200 px-20 py-4 rounded-full">View Website</Link>
+                </div>
             </div>
-
         </div>
     )
 }

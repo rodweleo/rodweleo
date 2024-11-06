@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Page() {
     return (
-        <div>
+        <div className="container">
             <main>
                 <section className="space-y-2.5">
                     <h1 className="font-bold text-4xl">Building a Restful API for Course Management with SpringBoot</h1>

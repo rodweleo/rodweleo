@@ -1,14 +1,15 @@
+
 "use client"
 
 import { Input } from "@/components/ui/input";
 import BlogPostCard from "./blog-post-card";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 export default function BlogPostsList({blogs}:{
     blogs: any[]
 }){
 
     const [filteredBlogs, setBlogs] = useState<any[]>(blogs)
-    const handleBlogSearch = (e) => {
+    const handleBlogSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const q = e.currentTarget.value;
 
         //setting te blogs' title and markdown as the search text content

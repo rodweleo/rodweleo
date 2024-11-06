@@ -2,10 +2,12 @@
 import NotableProjectCard from '@/components/notable-project-card';
 
 
-export default async function ProjectsList({projects}){
+export default async function ProjectsList({projects}:{
+    projects: any[]
+}){
     
     return (
-        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 w-full">
+        <ul className="flex flex-wrap gap-5 justify-center">
             {
                 projects.map((project: any) => (
                     <li key={project.name}>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 }
 export default function Contact() {
     return (
-        <main className="space-y-5">
+        <main className="container space-y-5">
             <section className="space-y-4">
                 <div className="space-y-2 text-center">
                     <Badge className="text-xl">Contact Me</Badge>

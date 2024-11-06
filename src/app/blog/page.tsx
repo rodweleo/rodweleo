@@ -29,7 +29,7 @@ export default async function Blog() {
     const posts = await getBlogPosts();
 
     return (
-        <main className="space-y-5">
+        <main className="container space-y-5">
             <header className="space-y-2.5 flex flex-col items-center justify-center">
                 <h1 className="font-bold text-5xl">Blog&#9997;</h1>
                 <p className="text-slate-500 text-xl text-center">An archive of everything I have written.</p>

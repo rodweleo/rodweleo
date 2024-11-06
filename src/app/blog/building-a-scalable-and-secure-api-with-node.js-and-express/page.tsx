@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Page(){
     return (
-        <div className="flex justify-between min-h-screen">
+        <div className="container">
             <main className="space-y-5">
                 <h1 className="font-bold text-4xl">Building a Scalable and Secure API with Nodejs and Express</h1>
                 <div className="flex items-center gap-5">
