@@ -1,9 +1,8 @@
 import BlogPostCard from "@/components/blog-post-card";
-import { Input } from "@/components/ui/input";
-import supabaseClient from "@/utils/supabase/server"
 import { Metadata } from "next";
 import { Separator } from "@/components/ui/separator"
-
+import axios from "axios";
+import BlogPostsList from "@/components/blog-posts-list";
 
 export const metadata: Metadata = {
     title: "Blog - Rodwell Leo",
@@ -15,36 +14,29 @@ export const metadata: Metadata = {
         siteName: "My Blog",
     }
 }
-const fetchBlogPosts = async () => {
-    const { data, error } = await supabaseClient.from("blog-posts").select("*")
+const getBlogPosts = async () => {
+    try{
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL!}/api/blog-posts`);
+        const posts = res.data;
 
-    return {
-        data,
-        error
+        return posts
+    }catch(e){
+        return []
     }
 }
 
 export default async function Blog() {
-    const { data, error } = await fetchBlogPosts();
+    const posts = await getBlogPosts();
 
-    if (error) {
-        return (<div>
-            Something went wrong.
-        </div>)
-    }
     return (
         <main className="space-y-5">
             <header className="space-y-2.5 flex flex-col items-center justify-center">
                 <h1 className="font-bold text-5xl">Blog&#9997;</h1>
                 <p className="text-slate-500 text-xl text-center">An archive of everything I have written.</p>
-                <Input type="search" placeholder="Search Articles" className="max-w-xl" />
+                
             </header>
             <Separator />
-            <ul>
-                {data?.map((blog) => (
-                    <li key={blog.id}><BlogPostCard blog={blog} /></li>
-                ))}
-            </ul>
+            <BlogPostsList blogs={posts}/>
         </main>
     )
 }

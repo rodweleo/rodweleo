@@ -1,29 +1,45 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from '@/components/ui/button';
 import { TOOLS } from "@/utils/data";
 import Image from "next/image";
 import WordFadeIn from "@/components/magicui/word-fade-in";
-import supabaseClient from "@/utils/supabase/server";
-export default async function Home() {
-  const { data, error } = await supabaseClient.from("work-experience").select("*")
+import WorkExperienceList from "@/components/work-experience-list";
+import ProjectsList from "@/components/projects-list";
+import { NOTABLE_POJECTS } from "@/utils/data";
 
+export const revalidate = 0
+
+
+const SOCIAL_LINKS = [
+  {
+    icon: <Github />, 
+    name: "GitHub",
+    href: "https://github.com/rodweleo"
+  },
+  {
+    icon: <Linkedin />,
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/rodweleo"
+  },
+  {
+    icon: <Mail />,
+    name: "Mail",
+    href: "mailto:leorodwel86@gmail.com"
+  }
+]
+export default function Home() {
   return (
     <main className="space-y-10">
       <section id="#intro" className="grid place-items-center">
         <div className="w-fit space-y-2">
           <WordFadeIn className="text-4xl" words="Hi, I'm Rodwell Leo &#128075;" />
           <p className="text-slate-500 text-lg">A Software Engineer driven by a passion for software craftsmanship and product innovation, leveraging technology to solve problems and create value for businesses and individuals alike by creating beautiful and functional digital products.</p>
-          <ul className="flex items-center gap-5 text-xl">
-            <li><Link href="https://github.com/rodweleo" target="_blank" title="Github"><Github /></Link></li>
-            <li><Link href="https://www.linkedin.com/in/rodweleo/" target="_blank" title="LinkedIn"><Linkedin /></Link></li>
-            <li><Link href="mailto:leorodwel86@gmail.com" title="Send a mail"><Mail /></Link></li>
+          <ul className="flex items-center gap-5 text-lg ">
+            {
+              SOCIAL_LINKS.map((link) => (
+              <li key={link.name}><Link href={link.href} className="flex items-center gap-2" target="_blank" title={link.name}>{link.icon} <span>{link.name}</span></Link></li>
+              ))
+            }
           </ul>
         </div>
       </section>
@@ -38,31 +54,17 @@ export default async function Home() {
 
       <section id="work-experience" className="space-y-2">
         <h1 className="text-2xl font-bold">Work Experience</h1>
-        <div className='space-y-2.5'>
-          {data ? <Accordion type="single" collapsible className="w-full">
-            {data ? data.map((experience, index: number) => (
-              <AccordionItem key={experience.company} value={`item ${index}`}>
-                <AccordionTrigger>
-                  <div className="flex flex-col items-start">
-                    <h1 className="text-xl font-bold">{experience.title}</h1>
-                    <p className="text-slate-500 text-md">{experience.company}</p>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent>
-                  <h3 className="font-medium text-lg">Achievements</h3>
-                  <ul className="list-disc ml-5">
-                    {experience.achievements && experience.achievements.map((achievement: string) => {
-                      return <li key={achievement}><p className="text-lg text-slate-500">{achievement}</p></li>;
-                    })}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
-            )) : null}
-          </Accordion> : null}
-          {error ? <p className='bg-red-100 text-red-500 px-2.5 py-5 rounded-lg'>Failed to fetch work experience data. <Button variant="link">Try Again</Button></p> : null}
-        </div>
+        <WorkExperienceList />
       </section>
 
+      <section id="notable-projects" className="space-y-2">
+        <div className="flex items-center justify-between">
+          <h1 className="text-2xl font-bold">Projects</h1>
+          <Link href="/projects" className="text-blue-500 hover:font-bold hover:underline transition-colors duration-200">View All</Link>
+        </div>
+        <ProjectsList projects={NOTABLE_POJECTS.sort().slice(0, 2)} />
+      </section>
+      
       <section className="space-y-2.5">
         <h1 className="font-bold text-2xl">Languages & Tools</h1>
         <ul id="languages&tools" className="flex flex-wrap gap-10">
@@ -70,7 +72,7 @@ export default async function Home() {
             TOOLS.map((tool) => (
               <li key={tool.name}>
                 <div className="grid grid-cols-1 place-items-center">
-                  <Image src={tool.thumbnail} alt={tool.name} width={100} height={100} />
+                  <Image src={tool.thumbnail} alt={tool.name} width={50} height={50} />
                   <p className="font-medium text-lg">{tool.name}</p>
                 </div>
               </li>

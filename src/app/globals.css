@@ -76,30 +76,96 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.nav-bar li a {
-  font-size: 1.25rem;
-  color: gray;
-  transition: 0.25s ease-in-out;
+/* Styling for inline <code> */
+code {
+  font-size: 0.95rem;
+  background-color: #f5f2f0;
+  color: #c7254e;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
-.nav-bar li a:hover {
-  font-weight: bold;
-  color: black;
+/* Styling for block-level <pre><code> */
+pre code {
+  display: block;
+  padding: 1rem;
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.nav-bar li a.active {
-  font-weight: bold;
-  color: black;
+/* Optional: Highlight specific lines */
+pre code .highlighted-line {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: block;
+  margin: 0 -1rem;
+  padding: 0 1rem;
 }
 
-.bars {
-  width: 40px;
-  height: 50px;
+/* General styling for blog post headers */
+h1, h2, h3, h4, h5 {
+  line-height: 1.3;
 }
 
-.bars .bar {
-  width: 100%;
-  height: 5px;
-  border-radius: 10px;
-  background: black;
+/* Main title */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-top: 0;
+  padding-bottom: 0.25rem;
 }
+
+/* Section heading */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* Subsection heading */
+h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-left: 0.5em;
+}
+
+/* Sub-subsection heading */
+h4 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #555;
+  margin-left: 1em;
+  opacity: 0.9;
+}
+
+/* Minor heading */
+h5 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #666;
+  margin-left: 1.5em;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Optional: Fine-tune spacing and color contrast for accessibility */
+h1, h2, h3, h4, h5 {
+  letter-spacing: 0.02em;
+}
+
+/* Ensure responsive scaling */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.1rem; }
+}
+
+

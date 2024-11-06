@@ -45,7 +45,7 @@ export default function RootLayout({
         <ToastContainer />
         <header className="shadow-md sticky top-0 z-50 bg-white/70 backdrop-blur-md">
           <section className="flex items-center container justify-around p-5">
-            <Link href="/"><Image src="/images/logo.png" width={50} height={50} alt="Rodwell Leo" /></Link>
+            <Link href="/" className="flex items-center gap-2"><Image src="/images/logo.png" width={30} height={30} alt="Rodwell Leo" /> <span className="text-lg font-semibold">Rodwell Leo</span></Link>
             <MainNav />
           </section>
         </header>

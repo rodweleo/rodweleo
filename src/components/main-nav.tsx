@@ -34,11 +34,11 @@ export default function MainNav() {
             slug: "/services",
             path: "/services"
         },
-        {
-            name: "Contact",
-            slug: "/contact",
-            path: "/contact"
-        }
+        // {
+        //     name: "Contact",
+        //     slug: "/contact",
+        //     path: "/contact"
+        // }
     ]
 
     //<button title="Menu" className="hidden"><Menu size={30} /></button>
@@ -48,7 +48,7 @@ export default function MainNav() {
             {dimensions.width > 768 ? <ul className="nav-bar flex gap-10">
                 {
                     navLinks.map((navLink) => (
-                        <li key={navLink.path}><Link href={navLink.path} className={`link ${pathname === navLink.path ? "active" : ""}`}>{navLink.name}</Link></li>
+                        <li key={navLink.path}><Link href={navLink.path} className={`${pathname === navLink.path ? "font-bold" : "text-slate-500"}`}>{navLink.name}</Link></li>
                     ))
                 }
 
@@ -61,7 +61,7 @@ export default function MainNav() {
                         <ul className="nav-bar flex flex-col gap-5">
                             {
                                 navLinks.map((navLink) => (
-                                    <li key={navLink.path}><Link href={navLink.path} className={`link ${pathname === navLink.path ? "active" : ""}`}>{navLink.name}</Link></li>
+                                    <li key={navLink.path}><Link href={navLink.path} className={`${pathname === navLink.path ? "font-bold" : "text-slate-500"}`}>{navLink.name}</Link></li>
                                 ))
                             }
                         </ul>

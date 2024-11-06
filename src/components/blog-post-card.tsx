@@ -9,10 +9,10 @@ export default function BlogPostCard({ blog }: {
 
     return (
         <div className="flex max-md:flex-wrap gap-2.5">
-            <Image src={blog.thumbnail} alt={blog.title} width={300} height={300} className="rounded-xl max-md:w-full" unoptimized />
+            <Image src={blog.thumbnail} alt={blog.title} width={200} height={200} className="rounded-lg max-md:w-full" unoptimized />
             <div className="flex flex-col justify-between space-y-2.5">
                 <div>
-                    <h1 className="font-bold text-3xl">{blog.title}</h1>
+                    <Link href={`/blog/${blog.slug}`}><h1 className="font-bold text-2xl hover:underline">{blog.title}</h1></Link>
                     <p className="text-lg text-slate-500">{blog.description}</p>
                 </div>
                 <ul className="flex flex-wrap gap-2.5">
