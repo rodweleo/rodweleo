@@ -8,13 +8,6 @@ I'm a Software Engineer with a keen interest in Full-Stack Development, Artifici
 
 ![Languages and Tools](https://skillicons.dev/icons?i=js,html,css,tailwindcss,react,nodejs,nextjs,angular,express,java,mysql,supabase,figma,firebase,typescript,docker,git,aws,azure)
 
-## 📚 Current Projects
-
-- **DemeterAI**: AI-driven smart farming project to optimize crop selection, resource management, and market access for smallholder farmers in Kenya.
-- **Case Management System**: Integrating RAG and a chatbot to assist with case filing and prosecution processes within the Directorate of Public Prosecution.
-- **Niche Agricultural Marketplace**: Creating a marketplace focused on agricultural products and services, tech and gadgets for the agricultural sector, and educational resources.
-
-
 ## 📫 Let's Talk
 
 - **Email**: leorodwel86@gmail.com
