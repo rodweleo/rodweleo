@@ -42,7 +42,7 @@ export default function Page(){
                         <div>
                             <ul className="list-decimal ml-5">
                                 <li><strong>Node.js</strong> is a powerful JavaScript runtime built on
-                                    Chrome's V8 engine, designed for building scalable network
+                                    Chrome&apos;s V8 engine, designed for building scalable network
                                     applications. </li>
                                 <li>
                                     <strong>Express.js</strong> is a minimalist web
@@ -151,7 +151,7 @@ export default function Page(){
                                 <li>
                                     <strong>HTTPS:</strong> Serve your API over HTTPS to encrypt data
                                     transmitted between the client and server. Use SSL/TLS certificates
-                                    from trusted authorities like Let's Encrypt.
+                                    from trusted authorities like Let&apos;s Encrypt.
                                 </li>
                                 <li>
                                     <strong>Error Handling:</strong> Implement proper error handling to
