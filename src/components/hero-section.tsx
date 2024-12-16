@@ -41,7 +41,7 @@ export default function HeroSection(){
               ))
             }
           </ul>
-          <Image src="/images/hero-devices.svg" width={700} height={300} className="pt-20"/>
+          <Image src="/images/hero-devices.svg" width={700} height={300} className="pt-20" alt="Hero Section Dev Tools"/>
         </div>
       </section>
     )
