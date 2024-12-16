@@ -16,15 +16,17 @@ export default function Error({
     }, [error])
 
     return (
-        <div>
-            <h2>Something went wrong!</h2>
-            <Button
-                onClick={
-                    () => reset()
-                }
-            >
-                Try again
-            </Button>
-        </div>
+        <section className='grid place-items-center'>
+            <div className='grid place-items-center'>
+                <h2>Something went wrong!</h2>
+                <Button
+                    onClick={
+                        () => reset()
+                    }
+                >
+                    Try again
+                </Button>
+            </div>
+        </section>
     )
 }

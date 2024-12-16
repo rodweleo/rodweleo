@@ -1,56 +1,21 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+
 import Link from "next/link";
 import { TOOLS } from "@/utils/data";
 import Image from "next/image";
-import WordFadeIn from "@/components/magicui/word-fade-in";
 import WorkExperienceList from "@/components/work-experience-list";
-import ProjectsList from "@/components/projects-list";
-import { NOTABLE_POJECTS } from "@/utils/data";
 import { Button } from "@/components/ui/button";
+import NotableProjectsSection from "@/components/notable-projects-section";
+import TestimonialsSection from "@/components/testimonials-section"
+import {Separator} from "@/components/ui/separator"
+import HeroSection from "@/components/hero-section"
+import { MessageSquare } from "lucide-react";
 
-export const revalidate = 0
-
-
-const SOCIAL_LINKS = [
-  {
-    icon: <Github />, 
-    name: "GitHub",
-    href: "https://github.com/rodweleo"
-  },
-  {
-    icon: <Linkedin />,
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/rodweleo"
-  },
-  {
-    icon: <Mail />,
-    name: "Mail",
-    href: "mailto:leorodwel86@gmail.com"
-  }
-]
 export default function Home() {
   return (
     <main className="space-y-10">
-      <section id="#intro" className="grid place-items-center h-screen">
-        <div className="w-fit space-y-5 flex flex-col items-center text-center">
-          <WordFadeIn className="sm:text-6xl text-4xl" words="Innovator, Problem-Solver, Craftsman" />
-          <p className="text-slate-800 text-lg">I leverage technology to solve problems and create value for businesses and individuals alike by creating useful digital products.</p>
-          <Image 
-            src="/images/A Tech Enthusiastic Lion with the physicality parts of a human being.jpg"
-            width={200}
-            height={200}
-            className="aspect-square rounded-full"
-            alt="Rodwell Leo"
-          />
-          <ul className="flex items-center gap-5 text-lg ">
-            {
-              SOCIAL_LINKS.map((link) => (
-              <li key={link.name}><Link href={link.href} className="flex items-center gap-2" target="_blank" title={link.name}>{link.icon} <span>{link.name}</span></Link></li>
-              ))
-            }
-          </ul>
-        </div>
-      </section>
+      
+      <HeroSection/>
+
       <section id="about-me" className="py-24  bg-blue-200 ">
         <div className="container space-y-2.5 text-center max-w-4xl">
           <h1>Hi, I&apos;m Rodwell Leo. Nice to Meet You.</h1>
@@ -60,45 +25,46 @@ export default function Home() {
 
       <section id="work-experience" className="">
         <div className="container space-y-2 ">
-          <h1 className="text-2xl font-bold text-center">Work Experience</h1>
+          <h1 className="text-4xl font-bold text-center">Here&apos;s where I&apos;ve worked at</h1>
           <WorkExperienceList />
         </div>
       </section>
 
-      <section id="notable-projects">
-        <div className="container gap-5 flex flex-col justify-between items-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold">Projects</h1>
-            <p>Here are a few past design projects I&apos;ve worked on.</p>
-          </div>
-          <ProjectsList projects={NOTABLE_POJECTS.sort().slice(0, 3)} />
-          <Link href="/projects" className="text-blue-500 w-fit border-2 font-bold border-blue-500 hover:font-bold hover:underline hover:text-white hover:bg-blue-500 transition-colors duration-200 px-20 py-3 rounded-full  ">View All</Link>
-        </div>
-      </section>
+      <NotableProjectsSection/>
       
-      <section>
-        <div className="container space-y-2.5">
+      <Separator/>
+
+      <section id="language&tools" className="py-12">
+        <div className="container space-y-10">
           <h1 className="text-center">Languages & Tools</h1>
-          <ul id="languages&tools" className="flex flex-wrap gap-10">
-            {
-              TOOLS.map((tool) => (
-                <li key={tool.name}>
-                  <div className="grid grid-cols-1 place-items-center">
-                    <Image src={tool.thumbnail} alt={tool.name} width={50} height={50} />
-                    <p className="font-medium text-lg">{tool.name}</p>
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
+          <div className="w-full grid place-items-center">
+            <ul id="languages&tools" className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-10 w-fit place-items-center">
+              {
+                TOOLS.map((tool) => (
+                  <li key={tool.name}>
+                    <div className="grid grid-cols-1 place-items-center">
+                      <Image src={tool.thumbnail} alt={tool.name} width={50} height={50} />
+                      <p className="font-medium text-lg">{tool.name}</p>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
        </div>
       </section>
 
-      <section className="bg-gray-800 w-full">
+      <Separator/>
+
+      <TestimonialsSection/>
+
+      <Separator/>
+
+      <section className="w-full">
         <div className="container py-20 text-center space-y-5">
-          <p className="text-white sm:text-4xl text-2xl">Start a Project</p>
-          <p className="text-slate-300">Interested in working together? We should queue up a time to chat.</p>
-          <Button className="rounded-full px-10 py-6 hover:text-blue-500 bg-blue-500 hover:bg-transparent text-white hover:border-2 hover:border-blue-500 font-bold"><Link href="/contact">Start a Conversation</Link></Button>
+          <p className=" sm:text-4xl text-2xl font-bold">Interested in collaborating with me?</p>
+          <p className="text-neutral-800">I&apos;m always open to discussing product design work or partnership opportunities.</p>
+          <Button className="rounded-full px-10 py-6 hover:text-blue-500 bg-blue-500 hover:bg-transparent text-white hover:border-2 hover:border-blue-500 font-bold"><Link href="/contact" className="flex items-center gap-2.5"> <MessageSquare/> <span>Start a Conversation</span> </Link></Button>
         </div>
       </section>
     </main>

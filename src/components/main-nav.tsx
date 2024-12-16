@@ -44,7 +44,7 @@ export default function MainNav() {
             </ul> :
                 <Sheet>
                     <SheetTrigger asChild>
-                        <button type="button" title="Menu"><Menu size={40} /></button>
+                        <button type="button" title="Menu"><Menu size={30} /></button>
                     </SheetTrigger>
                     <SheetContent>
                         <ul className="nav-bar flex flex-col gap-5">
