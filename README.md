@@ -6,7 +6,7 @@ I'm a Software Engineer with a keen interest in Full-Stack Development, Artifici
 
 ## 🖥️ Languages and Tools
 
-![Languages and Tools](https://skillicons.dev/icons?i=js,html,css,tailwindcss,react,nodejs,nextjs,angular,express,java,mysql,supabase,figma,firebase,typescript,docker,git,aws,azure)
+![Languages and Tools](https://skillicons.dev/icons?i=js,html,css,tailwindcss,react,nodejs,nextjs,express,java,mysql,supabase,firebase,typescript,docker,git,aws,azure)
 
 ## 📫 Let's Talk
 
