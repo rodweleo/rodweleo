@@ -2,7 +2,7 @@
 
 ## 🚀 About Me
 
-I'm a Software Engineer with a keen interest in Full-Stack Development, Artificial Intelligence, and Blockchain; leveraging technology for sustainable development.
+I'm a Software Engineer with a keen interest in App Development, Artificial Intelligence, and Blockchain.
 
 ## 🖥️ Languages and Tools
 
