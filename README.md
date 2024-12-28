@@ -18,14 +18,5 @@ I'm a Software Engineer with a keen interest in Full-Stack Development, Artifici
 
 ![Rodwell's GitHub stats](https://github-readme-stats.vercel.app/api?username=rodweleo&show_icons=true&theme=radical)
 
-## 🏆 GitHub Trophies
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=rodweleo&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
-
-
-## 🌱 Fun Facts
-
-- A Spider is the only Web Developer happy to find bugs 👀.
-
 
 Feel free to reach out for collaboration, discussion, or just a friendly chat!
