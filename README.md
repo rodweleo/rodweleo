@@ -2,11 +2,11 @@
 
 ## 🚀 About Me
 
-I'm a Software Engineer with a keen interest in Full-Stack Development, Artificial Intelligence, and Blockchain; leveraging technology for sustainable development.
+I'm a Software Engineer with a keen interest in App Development, Artificial Intelligence, and Blockchain.
 
 ## 🖥️ Languages and Tools
 
-![Languages and Tools](https://skillicons.dev/icons?i=js,html,css,tailwindcss,react,nodejs,nextjs,angular,express,java,mysql,supabase,figma,firebase,typescript,docker,git,aws,azure)
+![Languages and Tools](https://skillicons.dev/icons?i=js,html,css,tailwindcss,react,nodejs,nextjs,express,java,spring,mysql,mongodb,nestjs,supabase,firebase,typescript,docker,git,aws,azure)
 
 ## 📫 Let's Talk
 
@@ -17,15 +17,6 @@ I'm a Software Engineer with a keen interest in Full-Stack Development, Artifici
 ## 📈 GitHub Stats
 
 ![Rodwell's GitHub stats](https://github-readme-stats.vercel.app/api?username=rodweleo&show_icons=true&theme=radical)
-
-## 🏆 GitHub Trophies
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=rodweleo&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy)
-
-
-## 🌱 Fun Facts
-
-- A Spider is the only Web Developer happy to find bugs 👀.
 
 
 Feel free to reach out for collaboration, discussion, or just a friendly chat!
