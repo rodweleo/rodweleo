@@ -1,6 +1,26 @@
 export const TOOLS = [
   {
-    name: "React",
+    name: "Javascript",
+    thumbnail: "/images/skills_images/icons8-javascript-240.png",
+  },
+  {
+    name: "Typescript",
+    thumbnail: "/images/skills_images/icons8-typescript-480.png",
+  },
+  {
+    name: "Java",
+    thumbnail: "/images/skills_images/icons8-java.svg",
+  },
+  {
+    name: "Motoko",
+    thumbnail: "/images/skills_images/motoko_logo.svg",
+  },
+  {
+    name: "Solidity",
+    thumbnail: "/images/skills_images/icons8-solidity-480.png",
+  },
+  {
+    name: "ReactJS",
     thumbnail: "/images/skills_images/icons8-react-native-480.png",
   },
   {
@@ -8,20 +28,24 @@ export const TOOLS = [
     thumbnail: "/images/skills_images/nextjs.svg",
   },
   {
-    name: "Javascript",
-    thumbnail: "/images/skills_images/icons8-javascript-240.png",
+    name: "TailwindCSS",
+    thumbnail: "/images/skills_images/icons8-tailwind-css-240.png",
   },
   {
-    name: "Node",
+    name: "ShadCN",
+    thumbnail: "/images/skills_images/shadcn_logo.jpg",
+  },
+  {
+    name: "NodeJS",
     thumbnail: "/images/skills_images/icons8-nodejs-480.png",
-  },
-  {
-    name: "Java",
-    thumbnail: "/images/skills_images/icons8-java.svg",
   },
   {
     name: "Spring Boot",
     thumbnail: "/images/skills_images/icons8-spring-boot-480.png",
+  },
+  {
+    name: "NestJS",
+    thumbnail: "/images/skills_images/icons8-nestjs-480.png",
   },
   {
     name: "MySQL",
@@ -32,6 +56,10 @@ export const TOOLS = [
     thumbnail: "/images/skills_images/supabase-logo-icon.svg",
   },
   {
+    name: "MongoDB",
+    thumbnail: "/images/skills_images/icons8-mongodb-96.png",
+  },
+  {
     name: "Firebase",
     thumbnail: "/images/skills_images/icons8-google-firebase-console-480.png",
   },
@@ -40,12 +68,12 @@ export const TOOLS = [
     thumbnail: "/images/skills_images/icons8-git-480.png",
   },
   {
-    name: "Typescript",
-    thumbnail: "/images/skills_images/icons8-typescript-480.png",
+    name: "Vercel",
+    thumbnail: "/images/skills_images/vercel.ico",
   },
   {
-    name: "Solidity",
-    thumbnail: "/images/skills_images/icons8-solidity-480.png",
+    name: "Internet Computer Protocol (ICP)",
+    thumbnail: "/images/skills_images/ICP_LOGO.jpg",
   },
 ];
 

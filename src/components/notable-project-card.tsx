@@ -11,7 +11,7 @@ export default function NotableProjectCard({ project }: {
     return (
         <div className="relative w-[350px] h-[300px] group aspect-video bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer">
             <Image src={project.thumbnail_url === null ? "" : project.thumbnail_url} className="h-full w-full absolute inset-0 flex items-center justify-center" width={400} height={100} alt={project.name} unoptimized priority />
-            <div className="absolute inset-0 bg-gray-800 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute inset-0 bg-gray-800/90 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:backdrop-blur-sm">
                 <div className="relative p-2 h-full space-y-2 flex flex-col justify-between">
                     <div className="space-y-2">
                         <p className="font-bold text-2xl text-white">{project.name}</p>

@@ -17,29 +17,29 @@ export const metadata: Metadata = {
 }
 export default function Contact() {
     return (
-        <main className="container space-y-5">
+        <main className="space-y-5">
             <section className="space-y-4">
-                <div className="space-y-2 text-center">
+                <div className="space-y-2">
                     <Badge className="text-xl">Contact Me</Badge>
-                    <h1 className="font-bold text-5xl">Get in Touch</h1>
-                    <p className="text-slate-500">
+                    <h1 className="font-bold sm:text-5xl text-3xl">Get in Touch</h1>
+                    <p className="text-neutral-500">
                         Want to chat or have a project in mind? Just shoot me a <strong>Direct Message</strong> and I will respond as soon as possible.
                     </p>
                 </div>
             </section>
 
-            <Tabs defaultValue="contact-me" className="w-full">
-                <TabsList className="grid w-full grid-cols-2">
+            <ContactMeForm />
+            {/* <Tabs defaultValue="contact-me" className="w-full">
+                <TabsList className="grid w-full">
                     <TabsTrigger value="contact-me">Contact me</TabsTrigger>
-                    <TabsTrigger value="request-a-quotation">Request a Quotation</TabsTrigger>
                 </TabsList>
                 <TabsContent value="contact-me">
-                    <ContactMeForm />
+                    
                 </TabsContent>
                 <TabsContent value="request-a-quotation">
                     <RequestQuotationForm />
                 </TabsContent>
-            </Tabs>
+            </Tabs> */}
 
         </main>
     )

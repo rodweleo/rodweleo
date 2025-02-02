@@ -47,11 +47,12 @@ export default function Services() {
 
     return (
         <main className="space-y-5">
-            <header className="flex flex-col items-center justify-center space-y-2">
+            <header className="space-y-2">
                 <Badge className="text-xl">My Services</Badge>
                 <h1 className="font-bold text-4xl">What I offer</h1>
+                <p className="text-neutral-700 text-md">This are some of the services you&apos;d get once we partner</p>
             </header>
-            <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 mx-auto w-fit">
+            <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 w-fit">
                 {services.map((service) => (
                     <li key={service.title}>
                         <ServiceListItem service={service} />

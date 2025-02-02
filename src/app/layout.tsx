@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MainNav from "@/components/main-nav";
-import Image from "next/image";
 import Particles from "@/components/magicui/particles";
-const inter = Inter({ subsets: ["latin"] });
 import Link from "next/link";
 import MainFooter from "@/components/main-footer";
 import { Separator } from "@/components/ui/separator";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import Providers from "@/components/providers";
+import { Toaster } from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Rodwell Leo - Software Engineer',
@@ -20,39 +20,45 @@ export const metadata: Metadata = {
   }
 };
 
+const inter = Inter({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/svg+xml" href="/images/logo.png" />
+        <link rel="icon" type="image/png" href="/images/logo.png" />
       </head>
       <body className={inter.className}>
-          <Particles
-            className="fixed h-screen -z-50 w-full inset-0"
-            quantity={100}
-            ease={50}
-            color="#000000"
-            refresh
-            staticity={20}
-            size={2}
-          />
+        <Particles
+          className="fixed h-screen -z-50 w-full inset-0"
+          quantity={100}
+          ease={50}
+          color="#000000"
+          refresh
+          staticity={20}
+          size={2}
+        />
+        <Providers>
           <header className="shadow-md sticky top-0 z-50 bg-white/70 backdrop-blur-md">
             <section className="flex items-center container justify-between p-5">
-            <Link href="/" className="flex items-center gap-2"> <h1 className="text-lg font-semibold tracking-wide text-blue-500"><span className=" font-bold">{'<'}</span>Rodwell Leo<span className="font-bold">{'/>'}</span></h1></Link>
+              <Link href="/" className="flex items-center gap-2"> <h1 className="text-lg font-semibold tracking-wide text-blue-500"><span className=" font-bold">{'<'}</span>Rodwell Leo<span className="font-bold">{'/>'}</span></h1></Link>
               <MainNav />
             </section>
           </header>
-          <main className="py-10 min-h-screen">
+          <main className="container mx-auto py-10 min-h-screen">
             {children}
           </main>
           <Separator />
           <MainFooter />
+          <Toaster />
           <SpeedInsights />
           <Analytics />
+        </Providers>
+
       </body>
     </html>
   );

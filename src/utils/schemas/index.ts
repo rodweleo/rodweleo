@@ -17,8 +17,9 @@ export const RequestQuotationSchema = z.object({
 });
 
 export const ContactMeSchema = z.object({
-  firstName: z.string(),
-  lastName: z.string().optional(),
-  email: z.string().email("Please enter a valid emial address"),
-  message: z.string().optional(),
+  name: z.string().min(8, {
+    message: "Name is Required"
+  }),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string()
 });

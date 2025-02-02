@@ -8,72 +8,73 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from "@/components/ui/input";
-import { toast } from 'react-toastify';
-import { useRef } from "react";
-import emailjs from '@emailjs/browser';
+import { useState } from "react";
+import toast from 'react-hot-toast';
 
 export default function ContactMeForm() {
-    const formRef = useRef<HTMLFormElement | null>(null)
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const contactForm = useForm<z.infer<typeof ContactMeSchema>>({
         resolver: zodResolver(ContactMeSchema),
         defaultValues: {
-            firstName: "",
-            lastName: "",
+            name: "",
             email: "",
             message: "",
         },
     })
 
-    function onSubmit(values: z.infer<typeof ContactMeSchema>) {
-        if (formRef.current) {
-            emailjs.sendForm(process.env.NEXT_EMAILJS_SERVICE_ID!, process.env.NEXT_EMAILJS_TEMPLATE_ID!, formRef.current, process.env.NEXT_EMAILJS_PUBLIC_KEY!).then(() => {
-                toast.success(`Hello ${values.firstName}, your message has been sent.`)
-                contactForm.reset();
-            }).catch((error) => {
-                console.log(error)
-            })
+    async function onSubmit(values: z.infer<typeof ContactMeSchema>) {
+        setIsSubmitting(true);
+        toast.loading("Sending message. Please wait...", {
+            id: "1"
+        })
+        try {
+            const res = await fetch("/api/sendMessage", {
+                method: "POST",
+                body: JSON.stringify(values),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to send message.");
+            }
+
+            toast.success("Message sent successfully!");
+            // Reset the form after success
+            contactForm.reset();
+        } catch (error: any) {
+            toast.error(error.message || "Something went wrong.", {
+                id: "1"
+            });
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
     return (
         <Form {...contactForm}>
-            <form ref={formRef} onSubmit={contactForm.handleSubmit(onSubmit)} className="space-y-2.5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <FormField
-                        control={contactForm.control}
-                        name="firstName"
-                        render={({ field }) => (
-                            <FormItem >
-                                <FormLabel className="text-md">First name</FormLabel>
-                                <FormControl>
-                                    <Input className="text-md" type="text" placeholder="John" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={contactForm.control}
-                        name="lastName"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="text-md">Last name</FormLabel>
-                                <FormControl>
-                                    <Input type="Doe" placeholder="Doe" {...field} className="text-md" />
-                                </FormControl>
-
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                </div>
+            <form onSubmit={contactForm.handleSubmit(onSubmit)} className="space-y-2.5">
+                <FormField
+                    control={contactForm.control}
+                    name="name"
+                    render={({ field }) => (
+                        <FormItem >
+                            <FormLabel>Name</FormLabel>
+                            <FormControl>
+                                <Input type="text" placeholder="John" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
                 <FormField
                     control={contactForm.control}
                     name="email"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-md">Email Address</FormLabel>
+                            <FormLabel>Email Address</FormLabel>
                             <FormControl>
                                 <Input type="email" placeholder="abc@example.com" {...field} className="text-md" />
                             </FormControl>
@@ -88,16 +89,18 @@ export default function ContactMeForm() {
                     name="message"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-md">Message</FormLabel>
+                            <FormLabel>Message</FormLabel>
                             <FormControl>
-                                <Textarea placeholder="Type message here..." {...field} className="text-md" />
+                                <Textarea placeholder="Type message here..." {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
 
-                <Button disabled={!contactForm.formState.isDirty || !contactForm.formState.isValid}>Send Message</Button>
+                <Button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending message..." : "Send Message"}
+                </Button>
             </form>
         </Form>
     )

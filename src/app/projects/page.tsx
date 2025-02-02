@@ -1,56 +1,53 @@
-"use client"
+"use client";
 
-import ProjectsList from '@/components/projects-list';
-import { Badge } from '@/components/ui/badge';
-import { useProjects } from '@/hooks/use-projects';
-import { useEffect } from 'react';
-
-// export const metadata: Metadata = {
-//     title: "Projects - Rodwell Leo",
-//     description: "Explore the latest projects by Rodwell Leo, showcasing expertise in web development and design.",
-//     openGraph: {
-//         title: "Projects",
-//         description: "Explore the latest projects by Rodwell Leo, showcasing expertise in web development and design."
-//     }
-// }
+import ProjectsList from "@/components/projects-list";
+import { useProjectsQuery } from "@/hooks/use-projects-query";
+import { useEffect } from "react";
 
 
 export default function Projects() {
-
-    const { projects, isLoading } = useProjects()
+    const { data: projects, isLoading, error } = useProjectsQuery();
 
     useEffect(() => {
-        document.title = "Projects - Rodwell Leo"
-    }, [])
+        document.title = "Projects - Rodwell Leo";
+    }, []);
 
-
-    return <section id="projects" className="flex flex-col w-full justify-center items-center space-y-5">
-        <div className="text-center space-y-2.5">
-            <Badge className="text-xl">My Projects</Badge>
-            <h1 className="text-4xl font-bold">Check out my latest work</h1>
-            <p className="text-slate-500">I have worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</p>
-        </div>
-        <div>
-
-
-        </div>
-        {
-            isLoading ?
-                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
-                    <div className="animate-pulse w-[350px] h-[300px]">
-                        <div className="h-full w-full bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer"></div>
-                    </div>
-
-                    <div className="animate-pulse w-[350px] h-[300px]">
-                        <div className="h-full w-full bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer"></div>
-                    </div>
-
-                    <div className="animate-pulse w-[350px] h-[300px]">
-                        <div className="h-full w-full bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer"></div>
-                    </div>
+    return (
+        <section id="projects" className="space-y-5">
+            <div className="space-y-2.5">
+                <h1 className="sm:text-5xl text-4xl font-bold">Check out my Latest work</h1>
+                <p className="text-neutral-700 sm:text-xl text-lg">
+                    I have worked on a variety of projects, from simple websites to complex web applications.
+                    <br />
+                    Here are some of my favorites:
+                </p>
+            </div>
+            {isLoading && <LoadingState />}
+            {error && (
+                <div className="p-4 space-y-2 w-full rounded-md border border-red-500">
+                    <h1 className="text-4xl text-red-500">Error</h1>
+                    <p className="text-md text-red-500">{error.message}</p>
                 </div>
-                : <ProjectsList projects={projects} />
-        }
+            )}
 
-    </section>
+            {!isLoading && !error && projects && projects.length > 0 ? (
+                <ProjectsList projects={projects} />
+            ) : (
+                !isLoading &&
+                !error && <p className="text-neutral-700">No projects found.</p>
+            )}
+        </section>
+    );
 }
+
+const LoadingState = () => {
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 w-fit">
+            {[1, 2, 3].map((item) => (
+                <div key={item} className="animate-pulse w-[350px] h-[300px]">
+                    <div className="h-full w-full bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer"></div>
+                </div>
+            ))}
+        </div>
+    );
+};
