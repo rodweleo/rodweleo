@@ -8,7 +8,7 @@ export default function MainFooter() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="grid grid-cols-1 place-items-center space-y-10 py-24 bg-gray-800 px-10">
+        <footer className="grid grid-cols-1 place-items-center space-y-10 py-24 bg-gray-800 p-2.5">
             <p className="text-neutral-300 text-4xl font-bold tracking-wide text-center">Living, Learning & Leveling up One day at a Time.</p>
             <ul className="flex items-center gap-5 *:border *:border-white *:p-2.5 *:rounded-full *:text-white ">
                 <li><Link href="https://github.com/rodweleo" target="_blank"><Github /></Link></li>
@@ -26,9 +26,7 @@ export default function MainFooter() {
                     <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </nav>
-            <section>
-                <p className="text-neutral-300">&copy; Copyright {year} Rodwell Leo. All Rights Reserved.</p>
-            </section>
+            <p className="text-neutral-300 text-center">&copy; Copyright {year} Rodwell Leo. <br />All Rights Reserved.</p>
         </footer>
     )
 }

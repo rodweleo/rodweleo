@@ -20,7 +20,7 @@ export default function Home() {
 
       <FadeIn duration={150}>
         <section id="about-me" className="py-24  bg-gray-100 ">
-          <div className="space-y-2.5 grid place-items-center px-10 text-center">
+          <div className="space-y-2.5 grid place-items-center px-5 text-center">
             <h1>Hi, I&apos;m Rodwell Leo. Nice to Meet You.</h1>
             <p className="text-slate-800 text-lg max-w-4xl w-full">At the end of 2022, I completed my course and fulltime got into building and scaling my own SaaS businesses. Previously, I <strong><u><a href="#education">pursued a degree in computer science</a></u></strong> , <strong><u><a href="#work-experience">interned at big tech companies</a></u></strong>, and <strong><u>competed in over 10 hackathons.</u></strong> I&apos;m confident, naturally curious, and perpetually working on improving my skills one day at a time.</p>
           </div>
@@ -75,8 +75,8 @@ export default function Home() {
 
       <FadeIn duration={400}>
         <section className="w-full">
-          <div className="container py-20 text-center space-y-5">
-            <p className=" sm:text-4xl text-2xl font-bold">Interested in collaborating with me?</p>
+          <div className="py-20 text-center space-y-5">
+            <p className=" sm:text-4xl text-3xl font-bold">Interested in collaborating with me?</p>
             <p className="text-muted-foreground">I&apos;m always open to discussing product design work or partnership opportunities.</p>
             <Button className="rounded-full px-10 py-6 hover:text-blue-500 bg-blue-500 hover:bg-transparent text-white hover:border-2 hover:border-blue-500 font-bold"><Link href="/contact" className="flex items-center gap-2.5"> <MessageSquare /> <span>Start a Conversation</span> </Link></Button>
           </div>

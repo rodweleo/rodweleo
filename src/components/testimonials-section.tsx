@@ -45,7 +45,7 @@ export default function TestimonialsSection() {
 
   return (
     <div className="py-18 px-4">
-      <div className="max-w-3xl mx-auto text-center space-y-16">
+      <div className="w-full text-center space-y-16">
         <div className="space-y-2">
           <h2 className="text-3xl font-semibold tracking-tight">Testimonials</h2>
           <p className="text-muted-foreground">
@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
                   <AvatarFallback>{testimonials[activeIndex].author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
 
-                <q className="text-xl leading-relaxed max-w-3xl pt-10">
+                <q className="text-xl leading-relaxed max-w-xl pt-10">
                   {testimonials[activeIndex].quote}
                 </q>
 
