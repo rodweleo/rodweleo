@@ -31,7 +31,7 @@ export default function Projects() {
             )}
 
             {!isLoading && !error && projects && projects.length > 0 ? (
-                <ProjectsList projects={projects} />
+                <ProjectsList projects={projects} className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-10 w-fit" />
             ) : (
                 !isLoading &&
                 !error && <p className="text-neutral-700">No projects found.</p>

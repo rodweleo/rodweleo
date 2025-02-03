@@ -1,13 +1,16 @@
 
 import NotableProjectCard from '@/components/notable-project-card';
+import { cn } from "@/lib/utils"
 
+interface ProjectsListProps{
+    projects: any[],
+    className?: string
+}
 
-export default function ProjectsList({ projects }: {
-    projects: any[]
-}) {
+export default function ProjectsList({ projects, className }: ProjectsListProps) {
 
     return (
-        <ul className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-5 w-fit">
+        <ul className={cn(className)}>
             {
                 projects.map((project: any) => (
                     <li key={project.name}>

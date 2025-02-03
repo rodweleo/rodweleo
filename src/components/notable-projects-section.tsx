@@ -10,10 +10,10 @@ export default function NotableProjectsSection() {
 
     return (
         <section id="notable-projects" className="py-10">
-            <div className="gap-5 flex flex-col">
-                <div>
+            <div className="gap-5 flex flex-col justify-center items-center">
+                <div className="text-center">
                     <h1 className="text-4xl font-bold">My Recent Work</h1>
-                    <p className="text-neutral-700 sm:text-xl text-md">
+                    <p className="text-muted-foreground">
                         Here are a few past design projects I&apos;ve worked on.
                     </p>
                 </div>
@@ -34,7 +34,7 @@ export default function NotableProjectsSection() {
 
                 {!isLoading && !error && projects && projects.length > 0 ? (
 
-                    <ProjectsList projects={projects.sort().slice(0, 4)} />
+                    <ProjectsList projects={projects.sort().slice(0, 4)} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 w-fit" />
                 ) : (
                     !isLoading &&
                     !error && <p className="text-neutral-700">No projects found.</p>

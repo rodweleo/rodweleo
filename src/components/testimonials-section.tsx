@@ -69,7 +69,7 @@ export default function TestimonialsSection() {
                   <AvatarFallback>{testimonials[activeIndex].author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
 
-                <q className="text-xl leading-relaxed max-w-2xl mx-auto pt-10">
+                <q className="text-xl leading-relaxed max-w-3xl pt-10">
                   {testimonials[activeIndex].quote}
                 </q>
 

@@ -15,9 +15,9 @@ export default function WorkExperienceList () {
                 WORK_EXPERIENCE.map((experience, index: number) => (
                     <AccordionItem key={experience.company} value={`item ${index}`}>
                         <AccordionTrigger>
-                            <div className="flex flex-col items-start">
+                            <div className="text-left">
                                 <p className="text-xl font-bold">{experience.title}</p>
-                                <span className="text-slate-500 text-sm">{experience.company}</span>
+                                <span className="text-slate-500 text-sm ">{experience.company}</span>
                             </div>
                         </AccordionTrigger>
                         <AccordionContent>
