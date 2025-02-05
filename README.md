@@ -17,6 +17,6 @@ I'm a Software Engineer with a keen interest in App Development, Artificial Inte
 ## 📈 GitHub Stats
 
 ![Rodwell's GitHub stats](https://github-readme-stats.vercel.app/api?username=rodweleo&show_icons=true&theme=radical)
-
+[![My GitHub Language Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=rodweleo&langs_count=5&theme=tokyonight)]()
 
 Feel free to reach out for collaboration, discussion, or just a friendly chat!
