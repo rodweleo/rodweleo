@@ -1,41 +1,26 @@
-"use client";
 
 import ProjectsList from "@/components/projects-list";
-import { useProjectsQuery } from "@/hooks/use-projects-query";
-import { useEffect } from "react";
+import { Metadata } from "next";
+import { getProjects } from "../functions/getProjects";
+import { Suspense } from "react";
+import ProjectsHeader from "@/components/Projects/projects-header";
 
 
-export default function Projects() {
-    const { data: projects, isLoading, error } = useProjectsQuery();
-
-    useEffect(() => {
-        document.title = "Projects - Rodwell Leo";
-    }, []);
+export const metadata: Metadata = {
+    title: "Portfolio Projects | Rodwell Leo",
+    description: "Showcasing my journey as a software engineer through innovative solutions and creative problem-solving."
+}
+export default async function Page() {
+    
+    const projects = await getProjects()
 
     return (
         <section id="projects" className="space-y-5">
-            <div className="space-y-2.5">
-                <h1 className="sm:text-5xl text-4xl font-bold">Check out my Latest work</h1>
-                <p className="text-neutral-700 sm:text-xl text-lg">
-                    I have worked on a variety of projects, from simple websites to complex web applications.
-                    <br />
-                    Here are some of my favorites:
-                </p>
-            </div>
-            {isLoading && <LoadingState />}
-            {error && (
-                <div className="p-4 space-y-2 w-full rounded-md border border-red-500">
-                    <h1 className="text-4xl text-red-500">Error</h1>
-                    <p className="text-md text-red-500">{error.message}</p>
-                </div>
-            )}
-
-            {!isLoading && !error && projects && projects.length > 0 ? (
-                <ProjectsList projects={projects} className="grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2 gap-10 w-fit" />
-            ) : (
-                !isLoading &&
-                !error && <p className="text-neutral-700">No projects found.</p>
-            )}
+            <ProjectsHeader/>
+            <Suspense fallback={<LoadingState />}>
+                <ProjectsList projects={projects} className="flex flex-wrap items-center justify-center gap-10 h-full" />
+            </Suspense>
+           
         </section>
     );
 }
@@ -51,3 +36,5 @@ const LoadingState = () => {
         </div>
     );
 };
+
+

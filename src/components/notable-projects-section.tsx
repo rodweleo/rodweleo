@@ -34,7 +34,7 @@ export default function NotableProjectsSection() {
 
                 {!isLoading && !error && projects && projects.length > 0 ? (
 
-                    <ProjectsList projects={projects.sort().slice(0, 4)} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 w-fit" />
+                    <ProjectsList projects={projects.sort().slice(0, 4)} className="flex flex-wrap justify-center gap-10 w-fit" />
                 ) : (
                     !isLoading &&
                     !error && <p className="text-neutral-700">No projects found.</p>

@@ -3,13 +3,16 @@ export type SkillProps =  {
   image: string;
 }
 
-export type ProjectProps = {
-  name: string;
-  description: string;
-  thumbnail_url: string;
-  live_link: string;
-  tech_stack: string[];
+export interface Project {
+  name: string
+  description: string
+  tech_stack: string[]
+  created_at: string
+  id: string
+  live_link: string
+  thumbnail_url: string
 }
+
 
 export type WorkExperienceProps = {
   title: string;

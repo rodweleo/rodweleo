@@ -1,6 +1,6 @@
 
-import NotableProjectCard from '@/components/notable-project-card';
 import { cn } from "@/lib/utils"
+import { ProjectCard } from './Projects/project-card';
 
 interface ProjectsListProps{
     projects: any[],
@@ -14,7 +14,7 @@ export default function ProjectsList({ projects, className }: ProjectsListProps)
             {
                 projects.map((project: any) => (
                     <li key={project.name}>
-                        <NotableProjectCard project={project} />
+                        <ProjectCard project={project} />
                     </li>
                 ))
             }

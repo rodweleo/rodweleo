@@ -1,6 +1,11 @@
 
 import { DevToolsCard } from "@/components/dev-tools-card";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "Technologies & Tools - Rodwell Leo",
+    description: "A comprehensive overview of my technical skills and the technologies I work with regularly."
+}
 export default function ToolsPage() {
 
     const PL_TOOLS = [
