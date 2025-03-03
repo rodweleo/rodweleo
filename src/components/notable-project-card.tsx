@@ -1,12 +1,11 @@
 "use client"
 
 import Image from "next/image"
-import { Badge } from "./ui/badge"
-import { ProjectProps } from "@/utils/types"
+import { Project } from "@/utils/types"
 import Link from "next/link"
 
 export default function NotableProjectCard({ project }: {
-    project: ProjectProps
+    project: Project
 }) {
     return (
         <div className="relative size-80 group aspect-video bg-gray-200 rounded-xl overflow-hidden shadow-lg cursor-pointer">
