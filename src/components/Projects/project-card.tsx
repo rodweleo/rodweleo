@@ -34,8 +34,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
         >
-            <Card className="overflow-hidden cursor-pointer transition-all duration-300 h-full flex flex-col hover:border-primary/50 hover:shadow-lg w-full max-w-lg">
-                <div className="relative overflow-hidden bg-muted w-full max-w-lg">
+            <Card className="overflow-hidden cursor-pointer transition-all duration-300 h-full flex flex-col hover:border-primary/50 hover:shadow-lg w-full max-w-md">
+                <div className="relative overflow-hidden bg-muted w-full">
                     {project.thumbnail_url ? (
                         <Image
                             src={project.thumbnail_url || "/placeholder.svg"}

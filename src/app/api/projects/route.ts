@@ -6,7 +6,9 @@ export async function GET() {
     try {
         const { data: projects, error } = await supabaseClient
             .from('notable-projects')
-            .select('*');
+            .select('*', {
+                head: false
+            });
 
         if (error) {
             return NextResponse.json({ error: error.message }, { status: 500 });
